@@ -91,6 +91,13 @@ def calcular_dijkstra():
     caminho.reverse()
     return caminho, len(caminho) - 1, visitados
 
+def desenhar_caminho_djk():
+    for (linha, coluna) in caminho_djk:
+        x = (coluna - 1) * TAM_CELULA + TAM_CELULA // 4
+        y = (linha - 1) * TAM_CELULA + TAM_CELULA // 4
+        pygame.draw.rect(tela, COR_CAMINHO_DJK, (x, y, TAM_CELULA // 2, TAM_CELULA // 2))
+
+
 def escolher_dificuldade(): # função para o jogador escolher a dificuldade 
     global m_linhas, m_colunas
 
@@ -159,11 +166,6 @@ def desenhar_labirinto():
     obj_y = 0 + TAM_CELULA // 4
     pygame.draw.rect(tela, COR_OBJETIVO, (obj_x, obj_y, TAM_CELULA // 2, TAM_CELULA // 2))
 
-def desenhar_caminho_djk():
-    for (linha, coluna) in caminho_djk:
-        x = (coluna - 1) * TAM_CELULA + TAM_CELULA // 4
-        y = (linha - 1) * TAM_CELULA + TAM_CELULA // 4
-        pygame.draw.rect(tela, COR_CAMINHO_DJK, (x, y, TAM_CELULA // 2, TAM_CELULA // 2))
 
 def desenhar_controles():
     texto_passos = fonte.render(f"Seus passos: {passos} | Melhor: {passos_djk}", True, COR_TEXTO)
